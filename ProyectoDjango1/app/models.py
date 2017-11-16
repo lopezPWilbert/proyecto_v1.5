@@ -17,15 +17,28 @@ class Usuario_m(models.Model):
 		return self.Nombre.username
 
 
-
- 
 class Denuncia_m(models.Model):
 	user=models.ForeignKey(User)
 	titulo=models.CharField(max_length=50)
 	descripcion=models.TextField()
 	latitud=models.FloatField()
 	longitud=models.FloatField()
-	
+	lista_categorias=(
+        (1,'Reten'),
+		(2,'Bache'),
+		(3,'Accidente'),
+		(4,'Reparaciones'),
+		(5,'Evento'),
+		(6,'Otro')
+        )
+	categoria=models.IntegerField(choices=lista_categorias, verbose_name=u"Categoria",null=True, blank=True)
+	lista_nivel=(
+		(1,'Totalmente bloqueado'),
+		(2,'Parcialmente bloqueado'),
+		(3,'Ninguno')
+		)
+	nivel=models.IntegerField(choices=lista_nivel, verbose_name=u"Nivel",null=True, blank=True)
+
 	def __unicode__(self):
 		return self.titulo
 

@@ -7,7 +7,7 @@ class Usuario_Form(UserCreationForm):
 		Telefono = forms.IntegerField()
 		Direccion = forms.CharField(max_length =100)
 		Avatar = forms.FileField()
- 
+
 
 class imagenes_f(forms.ModelForm):
     class Meta:
@@ -27,8 +27,8 @@ class Denuncia_Form(forms.ModelForm):
 			'descripcion',
 			'latitud',
 			'longitud',
-			#'img',
-			#'video'
+			'categoria',
+			'nivel'
 		]
 
 		labels={
@@ -37,8 +37,8 @@ class Denuncia_Form(forms.ModelForm):
 			'descripcion':'Descripcion',
 			'latitud':'Latitud',
 			'longitud':'Longitud',
-			#'img':'Imagen',
-			#'video':'Video'
+			'categoria':'Categoria',
+			'nivel':'Nivel'
 		}
 
 		widgets={
