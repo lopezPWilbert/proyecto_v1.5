@@ -67,9 +67,11 @@ def Denuncia(request):
     if(request.method=='POST' and form.is_valid):
         formResult=form.save()
         if(form2.is_valid()):
-            formResult2=form2.save(commit=False)
-            formResult2.denunciaA_id=formResult.id
-            formResult2.save()
+            idDenuncia=formResult.id
+            
+            for x in request.FILES.getlist('imagenes'):
+                imagenes_m.objects.create(imagen=x, denunciaA_id=idDenuncia)
+                
             if(form3.is_valid()):
                 formResult3=form3.save(commit=False)
                 formResult3.denunciaB_id=formResult.id
