@@ -27,3 +27,5 @@
 
 
 	Agregar decorador de login aceptado
+1.5.1 Formulario triple ya guarda varias imagenes a la vez
+1.5.1.1 Formulario triple se le agregan 2 campos, todo funciona bien, incluso sin meter video.
