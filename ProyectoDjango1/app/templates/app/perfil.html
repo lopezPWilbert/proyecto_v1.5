@@ -1,0 +1,89 @@
+﻿{% extends "app/base.html" %}
+{% block estilos %}
+<style>
+		.foot{
+			height: 50px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: white;
+			background: #34495e !important;
+
+		}
+
+		.cabecera{
+			background: #34495e !important;
+		}
+		.perfil{
+			border-radius: 50%;
+		}
+</style>
+{% endblock estilos %}
+{% block content %}
+<div class="container mt-5 pt-5">
+	<div class="row">
+		<div class="col-6">
+			{% for b in ctx  %}
+				<p class="h2">Usuario: {{b.username}}</p>
+				
+				{% if b.first_name %}
+					<p class="h2">Nombre: {{b.first_name}}</p>
+				{% endif %}
+
+				{% if b.last_name %}
+					<p class="h2">Apellido: {{b.last_name}}</p>
+				{% endif %}
+
+				{% if b.email %}
+					<p class="h2">Correo: {{b.email}}</p>
+				{% endif %}
+					
+			{% endfor %}
+			
+		</div>
+		<div class="col-6">
+			{% for a in ctx2  %}
+			
+				<p>lorempixel</p>
+				{% if a.Avatar %}
+					<img class="perfil" src="{{a.Avatar.url}}" width="300px" height="300px">
+				
+					{% else %}
+					<img class="perfil" src="http://lorempixel.com/300/300/" width="300px" height="300px" alt="Imagen aleatoria">
+					
+				{% endif %}
+					
+			
+				
+
+		
+			{% endfor %}
+			
+		</div>
+	</div>
+</div>
+
+
+{% for b in ctx  %}
+
+	
+	{% ifequal user.id b.id  %}
+		{% if desicion %}
+		
+			{% for x in ctx2 %}
+				<a href="{% url 'actualizarPerfil_view' pk=x.id %}">Actualizar</a>
+			{% endfor %} 
+			
+		{%else%}
+
+			<a href="{% url 'registrarPerfil_view' %}">Registrar</a> 
+		{% endif %}
+	{% endifequal %}
+		
+{% endfor %}
+
+
+
+
+{% endblock content %}
+	
